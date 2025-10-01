@@ -1,0 +1,33 @@
+.footer {
+  background: var(--primary-dark);
+  color: var(--primary-cream);
+  padding: 2rem 0;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  color: var(--primary-cream);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+}
+
+.social-links a:hover {
+  color: var(--primary-blue);
+  transform: translateY(-2px);
+}
