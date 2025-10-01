@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import videoSource from '../assets/images/killvideo.mp4';
-import Contact from './Contact';
 
 const Home = () => {
   const videoRef = useRef(null);
   const servicesRef = useRef(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [isServicesVisible, setIsServicesVisible] = useState(false);
+  const navigate = useNavigate();
 
   // Video load and auto-play
   useEffect(() => {
@@ -32,6 +33,30 @@ const Home = () => {
     };
   }, []);
 
+  // Services scroll animation (final fix)
+  useEffect(() => {
+    const currentServicesRef = servicesRef.current; // ✅ local copy to fix warning
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsServicesVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (currentServicesRef) {
+      observer.observe(currentServicesRef);
+    }
+
+    return () => {
+      if (currentServicesRef) {
+        observer.unobserve(currentServicesRef); // ✅ use local copy
+      }
+    };
+  }, []);
+
   // Scroll volume control
   useEffect(() => {
     const handleScroll = () => {
@@ -46,27 +71,15 @@ const Home = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Services scroll animation
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsServicesVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (servicesRef.current) {
-      observer.observe(servicesRef.current);
-    }
-
-    return () => {
-      if (servicesRef.current) {
-        observer.unobserve(servicesRef.current);
+  // Navigate to contact page
+  const openServiceContact = (serviceName, serviceId) => {
+    navigate('/contact', { 
+      state: { 
+        selectedService: serviceName,
+        serviceId: serviceId
       }
-    };
-  }, []);
+    });
+  };
 
   // Scroll to next section function
   const scrollToNextSection = () => {
@@ -76,63 +89,19 @@ const Home = () => {
     });
   };
 
-  // Scroll to contact function
-  const scrollToContact = () => {
-    document.getElementById('contact').scrollIntoView({ 
-      behavior: 'smooth' 
-    });
-  };
-
   const services = [
-    {
-      id: 1,
-      title: "Ad Films",
-      description: "Creative and impactful advertisement films that tell your brand's story and drive results.",
-      image: "/images/ad-films.jpg",
-      icon: "🎬"
-    },
-    {
-      id: 2,
-      title: "Short Films",
-      description: "Compelling short films that capture emotions and leave lasting impressions on your audience.",
-      image: "/images/short-films.jpg",
-      icon: "📽️"
-    },
-    {
-      id: 3,
-      title: "Music Videos",
-      description: "High-energy music videos that bring your songs to life with stunning visuals and creativity.",
-      image: "/images/music-videos.jpg",
-      icon: "🎵"
-    },
-    {
-      id: 4,
-      title: "Wedding Shoots",
-      description: "Beautiful and emotional wedding cinematography that preserves your special moments forever.",
-      image: "/images/wedding-shoots.jpg",
-      icon: "💒"
-    },
-    {
-      id: 5,
-      title: "Social Media Reels",
-      description: "Engaging and viral-ready reels that boost your social media presence and audience engagement.",
-      image: "/images/social-reels.jpg",
-      icon: "📱"
-    },
-    {
-      id: 6,
-      title: "Brand Promotions",
-      description: "Strategic brand promotion videos that elevate your brand identity and market positioning.",
-      image: "/images/brand-promotions.jpg",
-      icon: "🚀"
-    }
+    { id: 1, title: "Ad Films", description: "Creative and impactful advertisement films that tell your brand's story and drive results.", image: "/images/ad-films.jpg", icon: "🎬" },
+    { id: 2, title: "Short Films", description: "Compelling short films that capture emotions and leave lasting impressions on your audience.", image: "/images/short-films.jpg", icon: "📽️" },
+    { id: 3, title: "Music Videos", description: "High-energy music videos that bring your songs to life with stunning visuals and creativity.", image: "/images/music-videos.jpg", icon: "🎵" },
+    { id: 4, title: "Wedding Shoots", description: "Beautiful and emotional wedding cinematography that preserves your special moments forever.", image: "/images/wedding-shoots.jpg", icon: "💒" },
+    { id: 5, title: "Social Media Reels", description: "Engaging and viral-ready reels that boost your social media presence and audience engagement.", image: "/images/social-reels.jpg", icon: "📱" },
+    { id: 6, title: "Brand Promotions", description: "Strategic brand promotion videos that elevate your brand identity and market positioning.", image: "/images/brand-promotions.jpg", icon: "🚀" }
   ];
 
   return (
     <div className="home-container">
       {/* Hero Section */}
       <div className="home">
-        {/* Background Video - Side Position */}
         <div className="video-container">
           <video
             ref={videoRef}
@@ -145,27 +114,19 @@ const Home = () => {
             <source src={videoSource} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-
-          {/* Dark Overlay for text background */}
           <div className="text-background-overlay"></div>
           <div className="video-overlay"></div>
         </div>
 
-        {/* Hero Content */}
         <div className="hero-content">
           <div className="hero-text">
-            {/* Main Heading */}
             <h1 className="main-heading">
               <span className="k91-text">K91</span>
               <span className="production-text">PRODUCTION</span>
             </h1>
-
-            {/* Description */}
             <p className="description">
               Hum ek creative production house hain jo ads, short films, music videos, wedding shoots, reels aur brand promotions me apna alag hi cinematic touch dete hain. Har frame me emotion, style aur perfection humari pehchaan hai.
             </p>
-
-            {/* Single Button */}
             <div className="hero-button">
               <div className="wrapper">
                 <div className="link_wrapper">
@@ -191,7 +152,6 @@ const Home = () => {
         className={`services-section ${isServicesVisible ? 'visible' : ''}`}
       >
         <div className="services-container">
-          {/* Section Header */}
           <div className="services-header">
             <h2 className="services-title">Our Premium Services</h2>
             <p className="services-subtitle">
@@ -199,7 +159,6 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Services Grid */}
           <div className="services-grid">
             {services.map((service, index) => (
               <div 
@@ -217,9 +176,9 @@ const Home = () => {
                   <p className="card-description">{service.description}</p>
                   <button 
                     className="contact-btn" 
-                    onClick={scrollToContact}
+                    onClick={() => openServiceContact(service.title, service.id)}
                   >
-                    Contact Now
+                    Contact for {service.title}
                   </button>
                 </div>
               </div>
