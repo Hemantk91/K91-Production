@@ -370,7 +370,7 @@
   }
   
   .description {
-    font-size: 0.8rem;
+    font-size: 0.2rem;
     max-width: 300px;
     margin-bottom: 2rem;
   }
@@ -648,6 +648,12 @@ html {
 @media screen and (max-width: 480px) {
   .services-section {
     padding: 4rem 1rem;
+  }
+  .k91-text{
+    font-size: 7.1rem;
+  }
+  .production-text{
+    font-size: 1.9rem;
   }
   
   .services-title {

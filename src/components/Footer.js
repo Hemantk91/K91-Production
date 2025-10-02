@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
 
+
 // SVG Icons
 const WhatsAppIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -39,31 +40,31 @@ const Footer = () => {
     {
       name: 'WhatsApp',
       icon: <WhatsAppIcon />,
-      url: 'https://wa.me/91YOUR_NUMBER',
+      url: 'https://wa.me/918619834121',
       color: '#25D366'
     },
     {
       name: 'Instagram',
       icon: <InstagramIcon />,
-      url: 'https://instagram.com/yourusername',
+      url: 'https://www.instagram.com/k91_production?igsh=MXMwemNrdGxxd2IzNg==',
       color: '#E4405F'
     },
     {
       name: 'YouTube',
       icon: <YouTubeIcon />,
-      url: 'https://youtube.com/c/yourchannel',
+      url: 'https://youtube.com/@k91_production?si=fM7V_E9OGWtH0nvr',
       color: '#FF0000'
     },
     {
       name: 'LinkedIn',
       icon: <LinkedInIcon />,
-      url: 'https://linkedin.com/in/yourprofile',
+      url: 'https://linkedin.com/in/hemant-kumar-538154341',
       color: '#0A66C2'
     },
     {
       name: 'GitHub',
       icon: <GitHubIcon />,
-      url: 'https://github.com/yourusername',
+      url: 'https://github.com/Hemantk91',
       color: '#181717'
     }
   ];
@@ -86,8 +87,8 @@ const Footer = () => {
               Creating cinematic experiences that tell your story with passion and precision.
             </p>
             <div className="contact-info">
-              <p>📧 info@k91production.com</p>
-              <p>📞 +91 XXXXX XXXXX</p>
+              <p>📧 hemant861983@gmail.com</p>
+              <p>📞 +91 8619834121</p>
             </div>
           </div>
 
@@ -95,7 +96,7 @@ const Footer = () => {
           <div className="footer-links">
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="#home">Home</a></li>
+              <li><a href="#Home">Home</a></li>
               <li><a href="#services">Services</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>

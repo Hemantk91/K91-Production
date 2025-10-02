@@ -113,37 +113,37 @@ const Contact = () => {
     {
       name: 'WhatsApp',
       icon: <WhatsAppIcon />,
-      url: 'https://wa.me/91YOUR_NUMBER',
+      url: 'https://wa.me/918619834121',
       color: '#25D366'
     },
     {
       name: 'Instagram',
       icon: <InstagramIcon />,
-      url: 'https://instagram.com/yourusername',
+      url: 'https://www.instagram.com/k91_production?igsh=MXMwemNrdGxxd2IzNg==',
       color: '#E4405F'
     },
     {
       name: 'Facebook',
       icon: <FacebookIcon />,
-      url: 'https://facebook.com/yourusername',
+      url: 'https://www.facebook.com/share/1CuBQDQ6JU/',
       color: '#1877F2'
     },
     {
       name: 'YouTube',
       icon: <YouTubeIcon />,
-      url: 'https://youtube.com/c/yourchannel',
+      url: 'https://youtube.com/@k91_production?si=fM7V_E9OGWtH0nvr',
       color: '#FF0000'
     },
     {
       name: 'LinkedIn',
       icon: <LinkedInIcon />,
-      url: 'https://linkedin.com/in/yourprofile',
+      url: 'https://linkedin.com/in/hemant-kumar-538154341',
       color: '#0A66C2'
     },
     {
       name: 'GitHub',
       icon: <GitHubIcon />,
-      url: 'https://github.com/yourusername',
+      url: 'https://github.com/Hemantk91',
       color: '#181717'
     }
   ];
@@ -152,20 +152,20 @@ const Contact = () => {
     {
       icon: <EmailIcon />,
       title: 'Email',
-      value: 'info@k91production.com',
-      link: 'mailto:info@k91production.com'
+      value: 'hemant861983@gmail.com',
+      link: 'mailto:hemant861983@gmail.com'
     },
     {
       icon: <PhoneIcon />,
       title: 'Phone',
-      value: '+91 XXXXX XXXXX',
-      link: 'tel:+91XXXXXXXXXX'
+      value: '+91 8619834121',
+      link: 'tel:+918619834121'
     },
     {
       icon: <LocationIcon />,
       title: 'Address',
-      value: 'Your Company Address, City, State - PIN Code',
-      link: 'https://maps.google.com'
+      value: 'Nawalgarh Rd, Bhadwasi, Sikar, Rajasthan 332024',
+      link: 'https://maps.app.goo.gl/13aUCFHsgFsW2VfC6'
     }
   ];
 
@@ -307,14 +307,14 @@ const Contact = () => {
         <div className="quick-actions">
           <button 
             className="whatsapp-btn"
-            onClick={() => openLink('https://wa.me/91YOUR_NUMBER')}
+            onClick={() => openLink('https://wa.me/918619834121')}
           >
             <WhatsAppIcon />
             Chat on WhatsApp
           </button>
           <button 
             className="call-btn"
-            onClick={() => openLink('tel:+91XXXXXXXXXX')}
+            onClick={(href="tel:+911234567890") => openLink('tel:+918619834121')}
           >
             <PhoneIcon />
             Call Now

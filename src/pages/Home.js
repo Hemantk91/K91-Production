@@ -73,8 +73,8 @@ const Home = () => {
 
   // Navigate to contact page
   const openServiceContact = (serviceName, serviceId) => {
-    navigate('/contact', { 
-      state: { 
+    navigate('/contact', {
+      state: {
         selectedService: serviceName,
         serviceId: serviceId
       }
@@ -90,12 +90,12 @@ const Home = () => {
   };
 
   const services = [
-    { id: 1, title: "Ad Films", description: "Creative and impactful advertisement films that tell your brand's story and drive results.", image: "/images/ad-films.jpg", icon: "🎬" },
-    { id: 2, title: "Short Films", description: "Compelling short films that capture emotions and leave lasting impressions on your audience.", image: "/images/short-films.jpg", icon: "📽️" },
-    { id: 3, title: "Music Videos", description: "High-energy music videos that bring your songs to life with stunning visuals and creativity.", image: "/images/music-videos.jpg", icon: "🎵" },
-    { id: 4, title: "Wedding Shoots", description: "Beautiful and emotional wedding cinematography that preserves your special moments forever.", image: "/images/wedding-shoots.jpg", icon: "💒" },
-    { id: 5, title: "Social Media Reels", description: "Engaging and viral-ready reels that boost your social media presence and audience engagement.", image: "/images/social-reels.jpg", icon: "📱" },
-    { id: 6, title: "Brand Promotions", description: "Strategic brand promotion videos that elevate your brand identity and market positioning.", image: "/images/brand-promotions.jpg", icon: "🚀" }
+    { id: 1, title: "AD Video", description: "Powerful ad films that capture attention, connect emotionally, and communicate your brand’s core message effectively.", image: "/images/ad-films.jpg", icon: "🎬" },
+    { id: 2, title: "Social Media Reels", description: "Engaging short reels crafted to boost visibility, drive conversations, and create lasting social media impressions.", image: "/images/social-reels.jpg", icon: "📱" },
+    { id: 3, title: "Music Videos", description: "Stunning music videos that combine creativity, storytelling, and visuals to bring your songs alive beautifully.", image: "/images/music-videos.jpg", icon: "🎵" },
+    { id: 4, title: "Short Films", description: "Creative short films with impactful storytelling, high-quality visuals, and emotions that deeply connect with audiences.", image: "/images/short-films.jpg", icon: "📽️" },
+    { id: 5, title: "Wedding Shoots", description: "Cinematic wedding shoots capturing timeless moments, raw emotions, and unforgettable memories in breathtaking visual storytelling.", image: "/images/wedding-shoots.jpg", icon: "💒" },
+    { id: 6, title: "Brand Promotions", description: "Strategic brand promotion videos designed to increase recognition, build trust, and drive meaningful customer engagement.", image: "/images/brand-promotions.jpg", icon: "🚀" }
   ];
 
   return (
@@ -146,9 +146,9 @@ const Home = () => {
       </div>
 
       {/* Services Section */}
-      <section 
-        ref={servicesRef} 
-        id="services" 
+      <section
+        ref={servicesRef}
+        id="services"
         className={`services-section ${isServicesVisible ? 'visible' : ''}`}
       >
         <div className="services-container">
@@ -161,8 +161,8 @@ const Home = () => {
 
           <div className="services-grid">
             {services.map((service, index) => (
-              <div 
-                key={service.id} 
+              <div
+                key={service.id}
                 className={`service-card ${isServicesVisible ? 'animate' : ''}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -174,11 +174,11 @@ const Home = () => {
                 <div className="card-content">
                   <h3 className="card-title">{service.title}</h3>
                   <p className="card-description">{service.description}</p>
-                  <button 
-                    className="contact-btn" 
+                  <button
+                    className="contact-btn"
                     onClick={() => openServiceContact(service.title, service.id)}
                   >
-                    Contact for {service.title}
+                    Contact Now
                   </button>
                 </div>
               </div>
