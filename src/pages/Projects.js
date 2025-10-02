@@ -1,7 +1,7 @@
-import React, { useState, useRef, } from "react";
+import React, { useState, useRef } from "react";
 import "./Projects.css";
 
-// Videos import karo
+// Videos import
 import PV1 from "../assets/images/PV1.mp4";
 import PV2 from "../assets/images/PV2.mp4";
 import PV3 from "../assets/images/PV3.mp4";
@@ -11,7 +11,7 @@ import PV6 from "../assets/images/PV6.mp4";
 import YT1 from "../assets/images/YT1.mp4";
 import YT2 from "../assets/images/YT2.mp4";
 
-// Images import karo
+// Images import
 import Post1 from "../assets/images/post1.jpg";
 import Post2 from "../assets/images/post2.jpg";
 import Post3 from "../assets/images/post3.jpg";
@@ -34,33 +34,31 @@ const Projects = () => {
     { id: 11, type: "image", imageUrl: Post3 }
   ];
 
-const handleVideoHover = (projectId) => {
-  setActiveVideo(projectId);
-  const videoElement = videoRefs.current[projectId];
-  if (videoElement) {
-    videoElement.currentTime = 0; 
-    videoElement.muted = false;   // ✅ Unmute on hover
-    videoElement.play().catch(() => {});
-  }
-};
-
-const handleVideoLeave = (projectId) => {
-  setActiveVideo(null);
-  const videoElement = videoRefs.current[projectId];
-  if (videoElement) {
-    videoElement.pause();
-    videoElement.muted = true;   // ✅ Mute again on leave
-  }
-};
-
-  
-
   const setVideoRef = (element, projectId) => {
     if (element) {
       videoRefs.current[projectId] = element;
     }
   };
-  
+
+  const handleVideoHover = (projectId) => {
+    setActiveVideo(projectId);
+    const videoElement = videoRefs.current[projectId];
+    if (videoElement) {
+      videoElement.currentTime = 0; // start from beginning
+      videoElement.muted = false;
+      videoElement.play().catch(() => {});
+    }
+  };
+
+  const handleVideoLeave = (projectId) => {
+    setActiveVideo(null);
+    const videoElement = videoRefs.current[projectId];
+    if (videoElement) {
+      videoElement.pause();
+      videoElement.currentTime = 2; // thumbnail 2-sec
+      videoElement.muted = true;
+    }
+  };
 
   return (
     <div className="projects-page">
@@ -85,8 +83,12 @@ const handleVideoLeave = (projectId) => {
                     muted
                     loop
                     playsInline
-                    preload="none"
+                    preload="metadata"
                     className="project-media"
+                    onLoadedMetadata={(e) => {
+                      e.currentTarget.currentTime = 2; // thumbnail
+                      e.currentTarget.pause();
+                    }}
                   />
                 ) : (
                   <img
@@ -99,7 +101,6 @@ const handleVideoLeave = (projectId) => {
             </div>
           ))}
         </div>
-        
 
         {/* Second Row - 3 Reels */}
         <div className="row reel-row">
@@ -119,8 +120,12 @@ const handleVideoLeave = (projectId) => {
                   muted
                   loop
                   playsInline
-                  preload="none"
+                  preload="metadata"
                   className="project-media"
+                  onLoadedMetadata={(e) => {
+                    e.currentTarget.currentTime = 2;
+                    e.currentTarget.pause();
+                  }}
                 />
               </div>
             </div>
@@ -145,8 +150,12 @@ const handleVideoLeave = (projectId) => {
                   muted
                   loop
                   playsInline
-                  preload="none"
+                  preload="metadata"
                   className="project-media"
+                  onLoadedMetadata={(e) => {
+                    e.currentTarget.currentTime = 2;
+                    e.currentTarget.pause();
+                  }}
                 />
               </div>
             </div>

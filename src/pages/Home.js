@@ -131,7 +131,7 @@ const Home = () => {
               <div className="wrapper">
                 <div className="link_wrapper">
                   <button className="view-work-btn" onClick={scrollToNextSection}>
-                    View My Work
+                    View Service
                   </button>
                   <div className="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
